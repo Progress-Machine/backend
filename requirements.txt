@@ -1,0 +1,16 @@
+fastapi~=0.101.0
+uvicorn
+psycopg2
+pycoingecko
+python-dotenv~=1.0.0
+SQLAlchemy~=1.4.41
+aiohttp
+sqlmodel~=0.0.8
+passlib~=1.7.4
+bcrypt
+python-jose
+python-multipart
+requests
+pydantic~=1.10.12
+starlette~=0.27.0
+email-validator
