@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from starlette.requests import Request
 from user.routers import router as user_router
 from auth.routers import router as auth_router
+from product.routers import router as product_router
 from load_env import load_env
 
 load_env()
@@ -26,3 +27,4 @@ async def validation_exception_handler(request: Request, err) -> JSONResponse:
 
 app.include_router(auth_router, tags=["auth"])
 app.include_router(user_router, tags=["user"])
+app.include_router(product_router, tags=["product"])

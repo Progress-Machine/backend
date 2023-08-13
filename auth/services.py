@@ -1,7 +1,7 @@
 from datetime import datetime
-from jose import jwt
+from jose import jwt, JWTError
 
-from auth.exceptions import IncorrectPassword
+from auth.exceptions import IncorrectPassword, TokenExpired, TokenError
 from auth.constants import *
 from auth.models import Token
 from user.models import User
@@ -12,6 +12,17 @@ def _create_token(data: dict, expires_delta: timedelta) -> str:
     data["exp"] = expire
     encoded_jwt = jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
+
+
+def decode_token(token: str) -> int:
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id: int = int(payload.get("sub"))
+        if user_id is None:
+            raise TokenError
+        return user_id
+    except JWTError:
+        raise TokenExpired
 
 
 def login_user(user: User, password: str) -> Token:
