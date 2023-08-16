@@ -25,8 +25,8 @@ tree = pickle.load(open("models/kd_tree.pickle", "rb"))
 normalizer = pickle.load(open("models/normalizer.pickle", "rb"))
 umap_clustering = pickle.load(open("models/umap_clustering.pickle", "rb"))
 
-clusters_domain = pd.read_csv("clusters_domain.csv")
-origin_df = pd.read_csv("original_data.csv")
+clusters_domain = pd.read_csv("data/clusters_domain.csv")
+origin_df = pd.read_csv("data/original_data.csv")
 
 column_names_to_normalize = ["price", "old_price", "celler_rating", "celler_mean_delivery_time", "celler_percent_bad_products",
 "sale_percent", "percent_order_of_all_seller", "not_info_old_price",
