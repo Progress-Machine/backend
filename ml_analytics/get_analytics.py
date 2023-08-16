@@ -3,7 +3,7 @@ from wordcloud import WordCloud
 from nltk.corpus import stopwords
 import nltk
 import ssl
-from full_pipeline import get_predict_by_link
+
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -22,7 +22,6 @@ def get_analytics(our_product, create_worldcloud=True):
     если флаг create_worldcloud=True
     out_product: dict с информацией о карточке товара, полученный после парсинга
     """
-    print(our_product)
     processed_data = preprocess_data(our_product)
     nearest_dataframe = k_nearest_items(processed_data)
 
@@ -109,23 +108,3 @@ def _create_worldcloud(nearest_dataframe):
     cloud = WordCloud(width=1920, height=1080, stopwords=stop_words,
                       background_color="rgba(255, 255, 255, 0)").generate(text)
     cloud.to_file("tmp_files/world_cloud.png")
-
-
-if __name__ == '__main__':
-    json_data_product, revenue, analys = get_predict_by_link(
-        "https://www.wildberries.ru/catalog/47836707/detail.aspx")
-    print(json_data_product)
-    # data = {"url": "https://www.wildberries.ru/catalog/55139609/detail.aspx",
-    #         "price": 394,
-    #         "old_price": 2193,
-    #         "order_count": 14000,
-    #         "celler_rating": 4.8,
-    #         "celler_mean_delivery_time": 99.6,
-    #         "celler_percent_bad_products": 0.1,
-    #         "description": "трендовый высокий красивый носка девушка женщина любой возраст идеально подойти повседневный носка занятие спорт просто домашний использование мягкий удобный подчеркнуть красота ваш нога подарить комфортный ощущение использование любой температурный условие носка белые носка чёрный - однотонный принтом разноцветный яркий полоска любой одежда обувь настроение качество удобство дать модель обеспечивать высокий мягкий резинка благодаря который носочек быть комфортно облегать ваш нога хороший сорт хлопок использовать изготовление этот носок сочетание тонкий прочный нить эластан - lycra / обеспечивать максимальный гигроскопичность прочность эластичность изготовить россия модель свободный удлинённый резинка давить",
-    #         "sale_percent": 0.179662562699498,
-    #         "percent_order_of_all_seller": 0.0776552550420447,
-    #         "not_info_old_price": False,
-    #         "not_info_order_count": False,
-    #         "celler_working_time_norm": 28}
-    # print(get_analytics(data))

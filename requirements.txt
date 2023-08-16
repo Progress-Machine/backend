@@ -30,3 +30,7 @@ transformers
 torch
 spacy
 umap-learn
+beautifulsoup4
+fake-useragent
+selenium
+catboost
