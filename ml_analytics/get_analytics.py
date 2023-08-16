@@ -14,7 +14,7 @@ else:
 nltk.download("stopwords")
 stop_words = stopwords.words('russian')
 
-from clustering import k_nearest_items, clusters_domain, preprocess_data
+from ml_analytics.clustering import k_nearest_items, preprocess_data
 
 
 def get_analytics(our_product, create_worldcloud=True):
@@ -107,4 +107,4 @@ def _create_worldcloud(nearest_dataframe):
     text = " ".join([i for i in nearest_dataframe.description if i is not np.nan])
     cloud = WordCloud(width=1920, height=1080, stopwords=stop_words,
                       background_color="rgba(255, 255, 255, 0)").generate(text)
-    cloud.to_file("tmp_files/world_cloud.png")
+    cloud.to_file("ml_analytics/tmp_files/world_cloud.png")

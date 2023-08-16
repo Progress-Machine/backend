@@ -1,13 +1,10 @@
 import json, pickle
 import pandas as pd
 import numpy as np
-from tqdm.notebook import tqdm
-from copy import copy, deepcopy
-from sklearn.decomposition import PCA
 from transformers import AutoImageProcessor, ViTModel
 import torch
 
-from clustering import preprocess_data
+from ml_analytics.clustering import preprocess_data
 
 device = "cpu"
 
@@ -17,8 +14,8 @@ model = ViTModel.from_pretrained("google/vit-base-patch16-224-in21k")
 model.to(device)
 
 
-pca_vit_transformer = pickle.load(open("models/pca_vit_embeddings.pkl", 'rb'))
-regressor = pickle.load(open("models/main_regressor.pkl" ,"rb"))
+pca_vit_transformer = pickle.load(open("ml_analytics/models/pca_vit_embeddings.pkl", 'rb'))
+regressor = pickle.load(open("ml_analytics/models/main_regressor.pkl" ,"rb"))
 
 
 def get_predict(json_object, image):

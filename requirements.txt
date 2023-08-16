@@ -16,6 +16,7 @@ starlette~=0.27.0
 email-validator
 PyJWT
 cryptography
+yandex-s3
 
 pandas
 dateparser

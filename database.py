@@ -12,6 +12,8 @@ engine = create_engine(environ.get("DATABASE_URL"))
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 if environ.get("INIT_TABLES") == "true":
     from user import models
+    from product import models
+
     SQLModel.metadata.create_all(engine)
 
 

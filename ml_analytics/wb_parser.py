@@ -25,7 +25,6 @@ options.add_argument("--window-size=800,600")
 
 driver = webdriver.Chrome(
     options=options)
-print(driver.get_window_size())
 
 
 def get_html(url, params=None):
@@ -43,7 +42,8 @@ def get_pages_count(html):
 
     try:
         good_count = \
-        soup.find('span', class_='goods-count').get_text(strip=True).replace("\xa0", '').split()[0]
+            soup.find('span', class_='goods-count').get_text(strip=True).replace("\xa0",
+                                                                                 '').split()[0]
         good_count = good_count[good_count.index("П") + 1:]
         pages_count = int(good_count) // 100 + 1
     except:
@@ -82,17 +82,19 @@ def parse_link(link):
         # цена товара
         try:
             final_price = \
-            product_soup.find('ins', class_='price-block__final-price').text.strip().replace("\xa0",
-                                                                                             '').split()[
-                0][:-1]
+                product_soup.find('ins', class_='price-block__final-price').text.strip().replace(
+                    "\xa0",
+                    '').split()[
+                    0][:-1]
         except:
             final_price = None
 
         try:
             old_price = \
-            product_soup.find('del', class_='price-block__old-price').text.strip().replace("\xa0",
-                                                                                           '').split()[
-                0][:-1]
+                product_soup.find('del', class_='price-block__old-price').text.strip().replace(
+                    "\xa0",
+                    '').split()[
+                    0][:-1]
         except:
             old_price = None
 
