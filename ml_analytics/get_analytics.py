@@ -1,17 +1,7 @@
 import numpy as np
 from wordcloud import WordCloud
 from nltk.corpus import stopwords
-import nltk
-import ssl
 
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-nltk.download("stopwords")
 stop_words = stopwords.words('russian')
 
 from ml_analytics.clustering import k_nearest_items, preprocess_data
