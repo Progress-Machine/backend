@@ -12,13 +12,14 @@ headers = {
 home_link = "https://www.wildberries.ru"
 
 useragent = UserAgent()
-options = webdriver.ChromeOptions()
-options.add_argument(f"user-agent={useragent.chrome}")
-options.add_argument('--headless')
-options.add_argument("--window-size=800,600")
-
-driver = webdriver.Chrome(options=options, service=webdriver.chrome.service.Service(
-    executable_path="chromedrivers/chromedriver_linux"))
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument("--window-size=1920,1080")
+driver = webdriver.Chrome(options=chrome_options)
+driver.implicitly_wait(10)
 
 
 def get_html(url, params=None):
