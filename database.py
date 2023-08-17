@@ -14,6 +14,7 @@ if environ.get("INIT_TABLES") == "true":
     from user import models
     from product import models
 
+    SQLModel.metadata.drop_all(engine)
     SQLModel.metadata.create_all(engine)
 
 

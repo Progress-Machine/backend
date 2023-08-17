@@ -4,6 +4,7 @@ from sqlalchemy import Column, DateTime
 
 
 class ProductBase(SQLModel):
+    user_id: int = Field(nullable=False, foreign_key="user.id")
     name: str | None = Field(nullable=True)
     url: str | None = Field(nullable=True)
     price: float | None = Field(nullable=True)

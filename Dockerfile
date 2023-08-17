@@ -1,8 +1,11 @@
 FROM python:3.10.12
 
+COPY requirements.txt /app/requirements.txt
 WORKDIR /app
-
-COPY . .
+RUN python -m pip install --upgrade pip
+RUN pip3 install -r requirements.txt
+RUN python -m nltk.downloader stopwords
+COPY . /app
 
 RUN apt-get update && apt-get install -y \
     fonts-liberation \
@@ -40,9 +43,5 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 # set display port to avoid crash
 ENV DISPLAY=:99
-
-RUN python -m pip install --upgrade pip
-RUN pip3 install -r requirements.txt
-RUN python -m nltk.downloader stopwords
 EXPOSE 5000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0","--port", "5000"]
