@@ -1,13 +1,7 @@
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 import time
-import json
-import pickle
-import random
-from datetime import datetime
-from tqdm import tqdm
 import requests
 
 headers = {
