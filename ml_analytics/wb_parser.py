@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from selenium import webdriver
-
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import json
 import pickle
@@ -23,8 +23,8 @@ options.add_argument(f"user-agent={useragent.chrome}")
 options.add_argument('--headless')
 options.add_argument("--window-size=800,600")
 
-driver = webdriver.Chrome(
-    options=options)
+driver = webdriver.Chrome(options=options, service=webdriver.chrome.service.Service(
+    executable_path="chromedrivers/chromedriver_linux"))
 
 
 def get_html(url, params=None):
