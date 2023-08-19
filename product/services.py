@@ -61,7 +61,7 @@ def get_text_from_gpt(mode: str, description: str):
 
 def product_analytics(product: Product | ProductCreate) -> dict:
     dict_product = product.dict()
-    pop_args = ["id", "user_id", "created_datatime"]
+    pop_args = ["id", "user_id", "created_datetime"]
     for el in pop_args:
         if el in dict_product:
             dict_product.pop(el)

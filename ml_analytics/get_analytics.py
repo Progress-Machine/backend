@@ -20,7 +20,8 @@ def get_analytics(our_product, create_worldcloud=True):
     results = {
         "revenue_analytic": _get_revenue_analytic(nearest_dataframe, our_product),
         "price_analytic": _get_price_analytic(nearest_dataframe, our_product),
-        "rating_analytic": _get_rating_analytic(nearest_dataframe, our_product)
+        "rating_analytic": _get_rating_analytic(nearest_dataframe, our_product),
+        "urls_nearest": nearest_dataframe.url.tolist()
     }
 
     return results
@@ -57,7 +58,7 @@ def _get_price_analytic(nearest_dataframe, our_product):
     mean_price = nearest_dataframe.price.mean()
     our_price = float(our_product["price"])
 
-    comment = f"Выша цена: {our_price}. Средняя цена в среди похожих товаров: {mean_price}; " \
+    comment = f"Ваша цена: {our_price}. Средняя цена среди похожих товаров: {mean_price}; " \
               f"Цена у товаров с наибольшей выручкой: {best_price}"
 
     comment2 = ""
